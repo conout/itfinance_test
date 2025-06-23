@@ -35,6 +35,10 @@ class LeadLogger
 
     private function checkOrCreateLogFile(string $filePath): void
     {
+        if (!is_dir("log")) {
+            mkdir("log", 0777, true);
+        }
+
         if (!file_exists($filePath)) {
             touch($filePath);
             chmod($filePath, 0777);
