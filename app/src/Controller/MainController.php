@@ -14,7 +14,7 @@ class MainController
         $processes = [];
 
         $generator = new Generator();
-        $generator->generateLeads(100, function (Lead $lead) use (&$processes) {
+        $generator->generateLeads(10000, function (Lead $lead) use (&$processes) {
             $processes[] = $this->startProcess($lead);
             // MAXIMUM_PROCESS_QUANTITY - ограничивает максимальное количество процессов, чтобы не перегружать память
             $this->waitForProcessesCompletion($processes, $_ENV['MAXIMUM_PROCESS_QUANTITY']);
